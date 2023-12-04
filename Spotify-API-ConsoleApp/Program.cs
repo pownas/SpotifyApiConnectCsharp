@@ -10,6 +10,9 @@ class Program
     static async Task Main(string[] args)
     {
         var token = await GetToken();
+        //var trackInfo = await GetTrackInfo(token);
+        //Console.WriteLine(trackInfo);
+
         var playlistInfo = await GetPlaylistInfo(token);
         Console.WriteLine(playlistInfo);
     }
@@ -29,6 +32,14 @@ class Program
 
         return JObject.Parse(responseString)["access_token"].ToString();
     }
+
+    // /// <example>https://developer.spotify.com/documentation/web-api/reference/get-track</example>
+    // static async Task<string> GetTrackInfo(string token)
+    // {
+    //     client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+    //     var response = await client.GetAsync("https://api.spotify.com/v1/tracks/4cOdK2wGLETKBW3PvgPWqT");
+    //     return await response.Content.ReadAsStringAsync();
+    // }
 
     /// <example>https://developer.spotify.com/documentation/web-api/reference/get-playlist</example>
     static async Task<string> GetPlaylistInfo(string token)
